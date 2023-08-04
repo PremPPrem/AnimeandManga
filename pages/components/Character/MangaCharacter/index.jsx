@@ -26,7 +26,7 @@ export default function index() {
             return (
               <CharacterItem
                 key={data.character.mal_id}
-                link={`/components/Character/AnimeCharacter/${data.character.mal_id}`}
+                link={`/components/Character/MangaCharacter/${data.character.mal_id}`}
                 image={data.character?.images.jpg.image_url}
                 name={data.character?.name}
                 role={data.role}

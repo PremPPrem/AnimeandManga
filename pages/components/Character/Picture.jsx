@@ -26,11 +26,13 @@ export default function Picture() {
       ) : (
         <div>
           <div className="flex justify-center items-start mt-[5rem] mb-12  ">
-            <div className="border-[3px] border-amber-custom h-[450px] w-[300px] fold:mx-2 fold:h-[350px]" id="pictureTop">
+            <div className="border-[3px] border-amber-custom h-[450px] w-[300px] fold:mx-2 fold:h-[350px]">
               <img
                 src={Picture[image]?.jpg.image_url}
                 alt=""
                 className="w-full h-full "
+                id="pictureTop"
+                
               />
             </div>
           </div>

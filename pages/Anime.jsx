@@ -1,5 +1,5 @@
 import React from 'react'
-import AnimePage from './AnimePage'
+import AnimePage from './components/AnimeAndManga/AnimePage'
 
 export default function Anime() {
   return (

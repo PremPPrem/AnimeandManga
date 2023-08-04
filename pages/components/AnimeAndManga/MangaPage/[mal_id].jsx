@@ -1,13 +1,14 @@
 import axios from "axios";
 import React from "react";
-import MangaItem from "../components/Item/MangaItem";
-import MangaCharacter from "../components/Character/MangaCharacter";
+import MangaItem from "../../Item/MangaItem";
+import MangaCharacter from "../../Character/MangaCharacter";
+
 
 export const getStaticPaths = async () => {
   const res = await fetch("https://api.jikan.moe/v4/manga");
   const resData = await res.json();
   const manga = await resData.data;
-  const paths = manga.map((data) => `/MangaPage/${data.mal_id}`);
+  const paths = manga.map((data) => `/components/AnimeAndManga/MangaPage/${data.mal_id}`);
 
   return {
     paths,

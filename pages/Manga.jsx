@@ -1,5 +1,5 @@
 import React from 'react'
-import MangaPage from './MangaPage'
+import MangaPage from './components/AnimeAndManga/MangaPage'
 
 export default function Manga() {
   return (
