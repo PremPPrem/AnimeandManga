@@ -2,7 +2,6 @@ import axios from "axios";
 import React from "react";
 import MangaItem from "../components/Item/MangaItem";
 
-
 export const getStaticPaths = async () => {
   const res = await fetch("https://api.jikan.moe/v4/manga");
   const resData = await res.json();
@@ -28,8 +27,19 @@ export const getStaticProps = async ({ params }) => {
 export default function MangaDetail({ manga }) {
   return (
     <div>
-  <h1 className="text-amber-custom mt-20 text-center">{manga.mal_id}</h1>
-  <MangaItem />
+      <MangaItem
+        title={manga.title}
+        type={manga.type}
+        image={manga.images?.jpg.large_image_url}
+        english={manga.title_english}
+        japanese={manga.title_japanese}
+        volumes={manga.volumes}
+        chapters={manga.chapters}
+        score={manga.score}
+        published={manga.published?.string}
+        status={manga.status}
+        synopsis={manga.synopsis}
+      />
     </div>
   );
 }
