@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import AnimeItem from "../components/Item/AnimeItem";
+import AnimeCharacter from "../components/Character/AnimeCharacter";
 
 export const getStaticPaths = async () => {
   const res = await fetch("https://api.jikan.moe/v4/anime");
@@ -45,6 +46,11 @@ export default function AnimeDetail({ anime }) {
         type={anime.type}
         synopsis={anime.synopsis}
       />
+      <div className="text-[2.125rem] text-amber-custom font-extrabold ml-4 sm:text-center">
+        Character
+      </div>
+      <div className=" border-b-2 mx-4 mt-2"></div>
+      <AnimeCharacter />
     </div>
   );
 }

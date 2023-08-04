@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import MangaItem from "../components/Item/MangaItem";
+import MangaCharacter from "../components/Character/MangaCharacter";
 
 export const getStaticPaths = async () => {
   const res = await fetch("https://api.jikan.moe/v4/manga");
@@ -40,6 +41,11 @@ export default function MangaDetail({ manga }) {
         status={manga.status}
         synopsis={manga.synopsis}
       />
+      <div className="text-[2.125rem] text-amber-custom font-extrabold ml-4 sm:text-center">
+        Character
+      </div>
+       <div className=" border-b-2 mx-4 mt-2"></div>
+      <MangaCharacter />
     </div>
   );
 }
