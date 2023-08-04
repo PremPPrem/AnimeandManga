@@ -1,38 +1,56 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaBars, FaTimes, FaSearch } from "react-icons/fa";
 
 export default function Navbar() {
   const [toggle, setToggle] = useState(false);
   const [toggleSearch, setToggleSearch] = useState(false);
+  const [scrollColor,setScrollColor] = useState(false)
+
+  const changeNavbarColor = () => {
+    if (window.scrollY >= 10) {
+      setScrollColor(true);
+    } else {
+      setScrollColor(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeNavbarColor);
+  })
+ 
+
   const toggleMenu = () => {
     setToggle(!toggle), setToggleSearch(false);
   };
+
   const toggleMenuSearch = () => {
     setToggleSearch(!toggleSearch), setToggle(false);
   };
+
   const active = useRouter();
 
   return (
     <>
-      <div className="z-[800] text-amber-custom flex justify-between items-center fixed top-0 left-0 w-full bg-black/50 mx-0 my-auto lg:bg-black h-[80px]">
+      <div className={scrollColor ? "z-[800] text-amber-custom flex justify-between items-center fixed top-0 left-0 w-full bg-black mx-0 my-auto lg:bg-black h-[80px]" : "z-[800] text-amber-custom flex justify-between items-center fixed top-0 left-0 w-full bg-black/50 lg:bg-black mx-0 my-auto  h-[80px]"}>
         <Link href="/" className="">
           <img
             src="/Anime&Manga_Icon.png"
             alt="Anime&Manga"
-            className=" h-[70px] "
+            className=" h-[70px] fold:h-[45px] sm:ml-2 "
           />
         </Link>
 
         <div className="flex justify-between items-center gap-10">
-          <ul
+
+      <ul
             onClick={() => {
               setToggle(false);
             }}
             className={
               toggle
-                ? "flex  text-2xl gap-10 lg:gap-0  font-bold lg:top-full lg:flex-col lg:absolute lg:left-0   lg:justify-center lg:items-center lg:w-full lg:bg-black lg:border-t-4 lg:border-white/20 "
+                ? "flex  text-2xl gap-10 lg:gap-0  font-bold lg:bg-black lg:top-full lg:flex-col lg:absolute lg:left-0   lg:justify-center lg:items-center lg:w-full  lg:border-t-4 lg:border-white/20 "
                 : "flex justify-between items-center text-2xl gap-10 font-bold lg:hidden"
             }
           >
@@ -97,6 +115,7 @@ export default function Navbar() {
               </Link>
             </li>
           </ul>
+   
 
           <div>
             <form
@@ -110,7 +129,7 @@ export default function Navbar() {
               <input
                 type="text"
                 placeholder="Search Anime or Manga"
-                className=" bg-transparent text-2xl sm:text-[1.2rem] fold:text-[0.95rem]  my-2  font-bold outline-none placeholder:text-amber-custom/50 lg:placeholder:text-amber-custom lg:w-[95%]"
+                className=" bg-transparent text-2xl sm:text-[1.2rem] fold:text-[0.95rem]  my-2  font-bold outline-none placeholder:text-amber-custom/70 lg:placeholder:text-amber-custom lg:w-[95%]"
               />
               <button className=" text-2xl sm:text-[1.2rem] sm:w-[2rem] sm:h-[1.75rem]   my-2  ml-2 flex items-center justify-center bg-amber-custom text-white rounded-[50%]  h-[2.5rem] w-[2.5rem]">
                 <FaSearch />

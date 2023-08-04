@@ -110,22 +110,22 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="sm:border-b-4 sm:border-white/20 ">
-          <div className="mx-2 lg:mx-6  sm:mx-8 ">
-            <h1 className=" text-[2rem] font-bold px-0 py-4 ">Newsletter</h1>
+        <div className="sm:border-b-4 sm:border-white/20  md:flex  md:justify-center md:text-center  sm:block sm:text-left ">
+          <div className="mx-2 lg:mx-6  sm:mx-8  ">
+            <h1 className=" text-[2rem] font-bold px-0 py-4">Newsletter</h1>
             <p>subscribe for latest updates</p>
             <form action="" onSubmit={handleSubmit}>
               <input
-                type="email"
+                type="text"
                 placeholder="Your Email"
-                className=" mt-[0.7rem] w-full md:w-[70%] sm:w-full block p-2 rounded-[10px] font-bold outline-none  bg-transparent border-2 border-amber-custom/40"
+                className=" text-amber-custom mt-4 w-full block p-2 rounded-[10px] font-bold outline-none  bg-transparent border-2 border-amber-custom/40 placeholder:text-amber-custom/70"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <small className="mb-[0.7rem] pl-2 text-red-500 block">
+              <small className="mb-[0.7rem] pl-2 text-red-500 block text-left">
                 {emailError}
               </small>
-              <button type="submit" className="button sm:my-4 ">
+              <button type="submit" className="button my-4 mx-1 ">
                 Subscribe
               </button>
             </form>

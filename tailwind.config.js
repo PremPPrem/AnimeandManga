@@ -19,9 +19,26 @@ module.exports = {
 
     backgroundImage: {
       'headImage': "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5))",
-      'ContactButton':"linear-gradient(144deg,#ffa500, #ff4500 50%,#ffa500)",
-      'ContactButtonHover': " linear-gradient(144deg,#ed9121, #ff5e 50%,#ed9121)"
+      'loadingLinear' : "linear-gradient(to top, transparent, rgb(255, 193, 7, 0.4))",
     },
+
+    animation: {
+      'loading': 'loading 2s linear infinite',
+    },
+
+    keyframes: {
+      loading: {
+        '0%': { transform: 'rotate(0deg)' },
+        '100%': { transform: 'rotate(360deg)' },
+      }
+    },
+
+    boxShadow: {
+      'loadingShadow': '0 0 10px #ffc107, 0 0 20px #ffc107, 0 0 30px #ffc107,0 0 40px #ffc107, 0 0 50px #ffc107, 0 0 60px #ffc107, 0 0 70px #ffc107,0 0 80px #ffc107, 0 0 90px #ffc107, 0 0 100px #ffc107',
+      // 'cardShadow' : '0.2px 2px 5px rgba(255,193,7,0.4)',
+      'miniCardShadow' : '-15px -15px 15px rgba(0,0,0,0.1),5px 5px 5px rgba(255,255,255,0.1),inset -15px -15px 5px rgba(0,0,0,0.1),inset 5px 5px 5px rgba(255,255,255,0.1)',
+    },
+    
     },
     screens: {
       '2xl': {'max': '1536px'},
@@ -39,6 +56,13 @@ module.exports = {
       'sm': {'max': '640px'},
       // => @media (max-width: 639px) { ... }
       'fold': {'max': '300px'},
+    },
+
+    backgroundSize: {
+      'auto': 'auto',
+      'cover': 'cover',
+      'contain': 'contain',
+      'loadingSize': '100px 180px',
     }
   },
   plugins: [],
