@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaBars, FaTimes, FaSearch } from "react-icons/fa";
+import { ApiDataContext } from "../context/ApiData";
 
 export default function Navbar() {
+  const {handleChange, handleSubmit, search } = useContext(ApiDataContext);
   const [toggle, setToggle] = useState(false);
   const [toggleSearch, setToggleSearch] = useState(false);
-  const [scrollColor,setScrollColor] = useState(false)
+  const [scrollColor, setScrollColor] = useState(false);
 
   const changeNavbarColor = () => {
     if (window.scrollY >= 10) {
@@ -18,8 +20,7 @@ export default function Navbar() {
 
   useEffect(() => {
     window.addEventListener("scroll", changeNavbarColor);
-  })
- 
+  });
 
   const toggleMenu = () => {
     setToggle(!toggle), setToggleSearch(false);
@@ -33,7 +34,13 @@ export default function Navbar() {
 
   return (
     <>
-      <div className={scrollColor ? "z-[800] text-amber-custom flex justify-between items-center fixed top-0 left-0 w-full bg-black mx-0 my-auto lg:bg-black h-[80px]" : "z-[800] text-amber-custom flex justify-between items-center fixed top-0 left-0 w-full bg-black/50 lg:bg-black mx-0 my-auto  h-[80px]"}>
+      <div
+        className={
+          scrollColor
+            ? "z-[800] text-amber-custom flex justify-between items-center fixed top-0 left-0 w-full bg-black mx-0 my-auto lg:bg-black h-[80px]"
+            : "z-[800] text-amber-custom flex justify-between items-center fixed top-0 left-0 w-full bg-black/50 lg:bg-black mx-0 my-auto  h-[80px]"
+        }
+      >
         <Link href="/" className="">
           <img
             src="/Anime&Manga_Icon.png"
@@ -43,8 +50,7 @@ export default function Navbar() {
         </Link>
 
         <div className="flex justify-between items-center gap-10">
-
-      <ul
+          <ul
             onClick={() => {
               setToggle(false);
             }}
@@ -115,23 +121,27 @@ export default function Navbar() {
               </Link>
             </li>
           </ul>
-   
 
           <div>
             <form
-              action=""
+              onSubmit={handleSubmit}
               className={
                 toggleSearch
-                  ? "flex justify-between items-center px-6 fold:px-2  rounded-[3.8rem] bg-white  mr-4 lg:absolute lg:top-[110%] lg:left-0 lg:right-0 lg:mx-4 "
+                  ? "flex justify-between items-center px-6 fold:px-2  rounded-[3.8rem] bg-white  mr-4 lg:absolute lg:top-[102%] lg:left-0 lg:right-0 lg:mx-4 "
                   : " flex justify-between items-center px-6 rounded-[3.8rem] bg-transparent border-white border-2 mr-4 lg:hidden"
               }
             >
               <input
+                onChange={handleChange}
+                value={search}
                 type="text"
                 placeholder="Search Anime or Manga"
                 className=" bg-transparent text-2xl sm:text-[1.2rem] fold:text-[0.95rem]  my-2  font-bold outline-none placeholder:text-amber-custom/70 lg:placeholder:text-amber-custom lg:w-[95%]"
               />
-              <button className=" text-2xl sm:text-[1.2rem] sm:w-[2rem] sm:h-[1.75rem]   my-2  ml-2 flex items-center justify-center bg-amber-custom text-white rounded-[50%]  h-[2.5rem] w-[2.5rem]">
+              <button
+                type="submit"
+                className=" text-2xl sm:text-[1.2rem] sm:w-[2rem] sm:h-[1.75rem]   my-2  ml-2 flex items-center justify-center bg-amber-custom text-white rounded-[50%]  h-[2.5rem] w-[2.5rem]"
+              >
                 <FaSearch />
               </button>
             </form>

@@ -3,7 +3,7 @@ import AnimePage from './components/AnimeAndManga/AnimePage'
 
 export default function Anime() {
   return (
-    <div>
+    <div className=' min-h-screen'>
       <AnimePage />
     </div>
   )

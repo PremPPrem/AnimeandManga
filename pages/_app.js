@@ -15,11 +15,11 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/A&M.ico" />
       </Head>
-      <Layout>
-        <ApiDataProvider>
+      <ApiDataProvider>
+        <Layout>
           <Component {...pageProps} />
-        </ApiDataProvider>
-      </Layout>
+        </Layout>
+      </ApiDataProvider>
     </>
   );
 }

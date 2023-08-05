@@ -74,14 +74,14 @@ export default function MangaItem({image,
             <span className=" text-amber-custom font-bold pr-1">
               Synopsis :
             </span>
-            {synopsis === "Unknown" || synopsis === null ? "No Synopsis" : showMore ? synopsis : synopsis?.substring(0, 450)}
+             {synopsis === "Unknown" || synopsis === null ? "No Synopsis" : showMore ? synopsis : synopsis?.substring(0, 450)}
             <button
               onClick={() => {
                 setShowMore(!showMore);
               }}
               className=" text-amber-custom font-bold pl-1"
             >
-              {showMore ? " . . . Show Less" : " . . . Show More"}
+              {synopsis === "Unknown" || synopsis === null ? "" :showMore ? " . . . Show Less" : " . . . Show More"}
             </button>
           </p>
         </div>

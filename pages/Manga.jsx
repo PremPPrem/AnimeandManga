@@ -3,7 +3,7 @@ import MangaPage from './components/AnimeAndManga/MangaPage'
 
 export default function Manga() {
   return (
-    <div>
+    <div className=' min-h-screen'>
       <MangaPage />
     </div>
   )

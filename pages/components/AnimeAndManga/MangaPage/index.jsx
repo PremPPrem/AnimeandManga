@@ -11,7 +11,7 @@ export default function index() {
       <div className=' flex flex-wrap justify-center items-center my-8'>
         {loading ? <Loading /> : manga.length && manga.map((data) => {
           return (
-           <Link href={`/components/AnimeAndManga/MangaPage//${data.mal_id}`} key={data.mal_id}> <Card {...data} /></Link>
+           <Link href={`/components/AnimeAndManga/MangaPage/${data.mal_id}`} key={data.mal_id}> <Card {...data} /></Link>
           )
         }) }
       </div>
