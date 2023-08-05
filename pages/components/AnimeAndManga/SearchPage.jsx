@@ -9,7 +9,7 @@ export default function SearchPage() {
     const { loading,animeSearch,mangaSearch } = useContext(ApiDataContext);
     return (
       <div className=' flex flex-wrap justify-center items-center my-8'>
-          {loading ?  <Loading /> : animeSearch.length === 0 || mangaSearch.length === 0 ?       <h1 className="text-[3rem] text-center text-amber-500 font-extrabold sm:text-[2rem] my-[2rem]">
+          {loading ?  <Loading /> : animeSearch.length === 0 || mangaSearch.length === 0 ?       <h1 className="text-[3rem] text-center text-amber-custom font-extrabold sm:text-[2rem] my-[2rem]">
           Search results not found!
         </h1> : animeSearch.length && animeSearch.map((data) => {
             return (

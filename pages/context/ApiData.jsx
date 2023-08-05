@@ -121,42 +121,17 @@ export const ApiDataProvider = ({ children }) => {
 
 
 
-  // const getAnimeAndMangaSearch = async (animeSearch, mangaSearch) => {
-  //   setLoading(true);
-  //   try {
-  //     const { data: resAnimeSearch } = await axios.get(
-  //       `${baseUrl}/anime?q=${animeSearch}`
-  //     );
-  //     const { data: resMangaSearch } = await axios.get(
-  //       `${baseUrl}/manga?q=${mangaSearch}`
-  //     );
-  //     setAnimeSearch(resAnimeSearch.data);
-  //     setMangaSearch(resMangaSearch.data);
-  //     console.log(resAnimeSearch.data, "AnimeSearch");
-  //     console.log(resMangaSearch.data, "MangaSearch");
-  //     setLoading(false);
-  //   } catch (err) {
-  //     console.log("AnimePage", err);
-  //     setLoading(false);
-  //   }
-  // };
-
   const getAnimeSearch = async (animeSearch) => {
     setLoading(true);
     try {
       const { data: resAnimeSearch } = await axios.get(
         `${baseUrl}/anime?q=${animeSearch}`
       );
-      // const { data: resMangaSearch } = await axios.get(
-      //   `${baseUrl}/manga?q=${mangaSearch}`
-      // );
       setAnimeSearch(resAnimeSearch.data);
-      // setMangaSearch(resMangaSearch.data);
       console.log(resAnimeSearch.data, "AnimeSearch");
-      // console.log(resMangaSearch.data, "MangaSearch");
       setLoading(false);
     } catch (err) {
-      console.log("AnimePage", err);
+      console.log("AnimeSearch", err);
       setLoading(false);
     }
   };
@@ -165,19 +140,14 @@ export const ApiDataProvider = ({ children }) => {
   const getMangaSearch = async (mangaSearch) => {
     setLoading(true);
     try {
-      // const { data: resAnimeSearch } = await axios.get(
-      //   `${baseUrl}/anime?q=${animeSearch}`
-      // );
       const { data: resMangaSearch } = await axios.get(
         `${baseUrl}/manga?q=${mangaSearch}`
       );
-      // setAnimeSearch(resAnimeSearch.data);
       setMangaSearch(resMangaSearch.data);
-      // console.log(resAnimeSearch.data, "AnimeSearch");
       console.log(resMangaSearch.data, "MangaSearch");
       setLoading(false);
     } catch (err) {
-      console.log("AnimePage", err);
+      console.log("MangaSearch", err);
       setLoading(false);
     }
   };
