@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { IoVideocamOffSharp } from "react-icons/io5";
+import Header from "../Header";
 
 export default function AnimeItem({
   trailer,
   image,
   title,
-  producers,
   english,
   japanese,
   rating,
@@ -22,24 +22,15 @@ export default function AnimeItem({
 }) {
   const [showMore, setShowMore] = useState(false);
 
-  const play = {
-    height: "450",
-    width: "800",
-  };
-
-  const onReady = (e) => {
-    e.target.pauseVideo();
-  };
-
   return (
     <div>
+      <Header name={type} title={title} image={image} />
       <h1 className="text-[3rem] sm:text-[2rem]   font-extrabold text-center text-amber-custom py-[3rem]">
         {title}
       </h1>
       <div className="flex items-center justify-center pb-[5rem] ">
         {trailer ? (
-       
-            <iframe
+          <iframe
             src={trailer}
             width="800"
             height="400"
@@ -48,17 +39,16 @@ export default function AnimeItem({
             allowFullScreen
             className=" md:mx-4"
           ></iframe>
-        
         ) : (
-      <>
-          <div className="flex items-center justify-center flex-col text-amber-custom/30  w-[800px] h-[400px] mx-4 relative shadow-miniCardShadow rounded-[15px]  ">
-            
-            <p className="text-center text-[3rem] sm:text-[2rem]">Trailer not available</p>
-            <IoVideocamOffSharp className=" text-[5rem] mt-4 " />
-          </div>
-      </>
+          <>
+            <div className="flex items-center justify-center flex-col text-amber-custom/30  w-[800px] h-[400px] mx-4 relative shadow-miniCardShadow rounded-[15px]  ">
+              <p className="text-center text-[3rem] sm:text-[2rem]">
+                Trailer not available
+              </p>
+              <IoVideocamOffSharp className=" text-[5rem] mt-4 " />
+            </div>
+          </>
         )}
-
       </div>
       <div className="grid grid-cols-2 sm:flex sm:justify-center  sm:flex-wrap my-[2rem]">
         <div className="flex  justify-center sm:items-center">
@@ -73,13 +63,17 @@ export default function AnimeItem({
             <span className=" text-amber-custom font-bold pr-1">
               English Title :
             </span>
-            {english === "Unknown" || english  === null ? "No English Title" : english}
+            {english === "Unknown" || english === null
+              ? "No English Title"
+              : english}
           </p>
           <p className="text-[#ffc] pb-[10px]  ">
             <span className=" text-amber-custom font-bold pr-1">
               Japanese Title :
             </span>{" "}
-            {japanese === "Unknown" || japanese  === null ? "No Japanese Title" : japanese}
+            {japanese === "Unknown" || japanese === null
+              ? "No Japanese Title"
+              : japanese}
           </p>
           <p className="text-[#ffc] pb-[10px]  ">
             <span className=" text-amber-custom font-bold pr-1">Rating :</span>{" "}
@@ -87,7 +81,9 @@ export default function AnimeItem({
           </p>
           <p className="text-[#ffc] pb-[10px]">
             <span className=" text-amber-custom font-bold pr-1">Score :</span>{" "}
-            {score === "Unknown" || score === null ? "No Score" : `${score} / 10 `}
+            {score === "Unknown" || score === null
+              ? "No Score"
+              : `${score} / 10 `}
           </p>
           <p className="text-[#ffc] pb-[10px]">
             <span className=" text-amber-custom font-bold pr-1">Year :</span>{" "}
@@ -101,23 +97,29 @@ export default function AnimeItem({
             <span className=" text-amber-custom font-bold pr-1">
               Broadcast :
             </span>{" "}
-            {broadcast === "Unknown" || broadcast === null ? "No Broadcast" : broadcast}
+            {broadcast === "Unknown" || broadcast === null
+              ? "No Broadcast"
+              : broadcast}
           </p>
           <p className="text-[#ffc] pb-[10px]">
             <span className=" text-amber-custom font-bold pr-1">
               Duration :
             </span>{" "}
-            {duration === "Unknown" || duration === null ? "No Duration" : duration}
+            {duration === "Unknown" || duration === null
+              ? "No Duration"
+              : duration}
           </p>
           <p className="text-[#ffc] pb-[10px]">
             <span className=" text-amber-custom font-bold pr-1">
               Episodes :
             </span>{" "}
-            {episodes === "Unknown" || episodes === null ? "No Episodes" : episodes}
+            {episodes === "Unknown" || episodes === null
+              ? "No Episodes"
+              : episodes}
           </p>
           <p className="text-[#ffc] pb-[10px]">
             <span className=" text-amber-custom font-bold pr-1">Season :</span>{" "}
-            {season === "Unknown" || season === null  ? "No Season" : season}
+            {season === "Unknown" || season === null ? "No Season" : season}
           </p>
           <p className="text-[#ffc] pb-[10px]">
             <span className=" text-amber-custom font-bold pr-1">source :</span>{" "}
@@ -131,14 +133,20 @@ export default function AnimeItem({
             <span className=" text-amber-custom font-bold pr-1">
               Synopsis :
             </span>
-            {synopsis === "Unknown" || synopsis === null ? "No Synopsis" : showMore ? synopsis : synopsis?.substring(0, 450)}
+            {synopsis === "Unknown" || synopsis === null
+              ? "No Synopsis"
+              : showMore
+              ? synopsis
+              : synopsis?.substring(0, 450)}
             <button
               onClick={() => {
                 setShowMore(!showMore);
               }}
               className=" text-amber-custom font-bold pl-1"
             >
-              {showMore ? " . . . Show Less" : " . . . Show More"}
+              {synopsis === "Unknown" || synopsis === null || synopsis?.length <= 451
+                ? ""
+                :showMore ? " . . . Show Less" : " . . . Show More"}
             </button>
           </p>
         </div>

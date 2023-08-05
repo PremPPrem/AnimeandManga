@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "./components/Modal";
+import Header from "./components/Header";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -85,7 +86,13 @@ export default function Contact() {
 
 
   return (
-    <div>
+    <div className="min-h-screen">
+           <Header
+          name="Contact"
+          title="Get Helps & Friendly Support"
+          image="/Header_Image/Contact_Header.jpg"
+        />
+      
       {openModal && <Modal closeModal={setOpenModal} btnName="Submit"  />}
       <div className="max-w-[80%] mx-auto md:max-w-[90%] my-[5rem]">
         <form

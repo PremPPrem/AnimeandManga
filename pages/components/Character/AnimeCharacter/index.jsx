@@ -4,7 +4,6 @@ import CharacterItem from "../CharacterItem";
 import { ApiDataContext } from "@/pages/context/ApiData";
 import { useRouter } from "next/router";
 
-
 export default function index() {
   const { loading, getCharacterAnime, animeCharacters } =
     useContext(ApiDataContext);
@@ -20,6 +19,10 @@ export default function index() {
       <div className="flex justify-center items-center flex-wrap my-[2rem]">
         {loading ? (
           <Loading />
+        ) : animeCharacters.length === 0 ? (
+          <h1 className="text-[3rem] text-center text-amber-custom font-extrabold sm:text-[2rem] my-[2rem]">
+            Characters not found!
+          </h1>
         ) : (
           animeCharacters.length &&
           animeCharacters.map((data) => {

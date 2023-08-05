@@ -19,7 +19,7 @@ export default function Card({images,mal_id,title,score,type}) {
             <div className=' text-amber-custom top-0 right-0  absolute p-1  flex items-center justify-center capitalize  '><span className=' p-2 bg-gray-900/80 rounded-[10px] font-bold shadow-miniCardShadow'>{type}</span></div>
             <div className=" text-amber-custom flex items-center justify-between px-4 pt-2 pb-4 tracking-[0.5px] absolute bottom-0 bg-black/70 w-full font-bold ">
                 <h1 className='mt-0'>{title}</h1>
-             <span className={`${scoreCheck(score)} ml-2 py-1 px-2 bg-gray-900 rounded-[10px] font-extrabold shadow-miniCardShadow  `}><div className='flex justify-center text-yellow-400'><AiFillStar /></div>{score?.toFixed(2)}</span>
+             <span className={`${scoreCheck(score)} ml-2 py-1 px-2 bg-gray-900 rounded-[10px] font-extrabold shadow-miniCardShadow text-center  `}><div className='flex justify-center text-yellow-400'><AiFillStar /></div>{score ? score?.toFixed(2) : 0?.toFixed(2)}</span>
             </div>
         </div>
       

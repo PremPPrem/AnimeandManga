@@ -5,9 +5,9 @@ import { FaBars, FaTimes, FaSearch } from "react-icons/fa";
 import { ApiDataContext } from "../context/ApiData";
 
 export default function Navbar() {
-  const {handleChange, handleSubmit, search } = useContext(ApiDataContext);
+  const {handleChange, handleSubmit, search,toggleSearch,setToggleSearch } = useContext(ApiDataContext);
   const [toggle, setToggle] = useState(false);
-  const [toggleSearch, setToggleSearch] = useState(false);
+  // const [toggleSearch, setToggleSearch] = useState(false);
   const [scrollColor, setScrollColor] = useState(false);
 
   const changeNavbarColor = () => {

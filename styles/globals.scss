@@ -70,3 +70,34 @@ body {
 
 }
 
+
+.slick-slide > div {
+  margin: 0 10px;
+  
+}
+
+// .slick-slide {
+//   margin: 0 -10px;
+ 
+// }
+
+.slick-dots li button::before {
+  font-size: 10px;
+  color: #fff;
+  opacity: 0.9;
+  padding-top: 5px;
+}
+
+
+.slick-dots li.slick-active button::before {
+    color: #ffc107 !important;
+}
+
+
+@media (max-width: 640px ) {
+  .slick-slide > div {
+    margin: 0 ;
+    
+  }
+
+}

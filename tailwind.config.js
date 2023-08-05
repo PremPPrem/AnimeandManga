@@ -20,6 +20,7 @@ module.exports = {
     backgroundImage: {
       'headImage': "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5))",
       'loadingLinear' : "linear-gradient(to top, transparent, rgb(255, 193, 7, 0.4))",
+      'headImageHome': "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),url('/Header_Image/Home_Header.jpg')",
     },
 
     animation: {

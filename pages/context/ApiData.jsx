@@ -14,11 +14,15 @@ export const ApiDataProvider = ({ children }) => {
   const [Picture, setPicture] = useState([]);
   const [animeSearch, setAnimeSearch] = useState([]);
   const [mangaSearch, setMangaSearch] = useState([]);
+  const [animeTop, setAnimeTop] = useState([]);
+  const [mangaTop, setMangaTop] = useState([]);
+  const [coming, setComing] = useState([]);
+  const [airing, setAiring] = useState([]);
   const [search, setSearch] = useState("");
   const router = useRouter();
   const [animeId, setAnimeId] = useState({});
   const [mangaId, setMangaId] = useState({});
-
+  const [toggleSearch, setToggleSearch] = useState(false);
 
   const getAnime = async () => {
     setLoading(true);
@@ -33,19 +37,15 @@ export const ApiDataProvider = ({ children }) => {
     }
   };
 
-
   const getAnimeId = async (id) => {
     try {
       const { data: resAnimeId } = await axios.get(`${baseUrl}/anime/${id}`);
       setAnimeId(resAnimeId.data);
       // console.log(resAnimeId.data, "AnimeId");
-   
     } catch (err) {
       console.log("AnimeId", err);
     }
   };
-
-
 
   const getManga = async () => {
     setLoading(true);
@@ -60,13 +60,11 @@ export const ApiDataProvider = ({ children }) => {
     }
   };
 
-  
   const getMangaId = async (id) => {
     try {
       const { data: resMangaId } = await axios.get(`${baseUrl}/manga/${id}`);
       setMangaId(resMangaId.data);
       // console.log(resAnimeId.data, "AnimeId");
-   
     } catch (err) {
       console.log("MangaId", err);
     }
@@ -79,7 +77,7 @@ export const ApiDataProvider = ({ children }) => {
         `${baseUrl}/anime/${anime}/characters`
       );
       setAnimeCharacters(resCharacterAnime.data);
-      console.log(resCharacterAnime.data, "AnimeCharacter");
+      // console.log(resCharacterAnime.data, "AnimeCharacter");
       setLoading(false);
     } catch (err) {
       console.log("AnimeCharacter", err);
@@ -94,15 +92,13 @@ export const ApiDataProvider = ({ children }) => {
         `${baseUrl}/manga/${manga}/characters`
       );
       setMangaCharacters(resCharacterManga.data);
-      console.log(resCharacterManga.data, "MangaCharacter");
+      // console.log(resCharacterManga.data, "MangaCharacter");
       setLoading(false);
     } catch (err) {
       console.log("MangaCharacter", err);
       setLoading(false);
     }
   };
-
-
 
   const getPicture = async (id) => {
     setLoading(true);
@@ -111,15 +107,13 @@ export const ApiDataProvider = ({ children }) => {
         `${baseUrl}/characters/${id}/pictures`
       );
       setPicture(resPicture.data);
-      console.log(resPicture.data);
+      // console.log(resPicture.data);
       setLoading(false);
     } catch (err) {
       console.log(err);
       setLoading(false);
     }
   };
-
-
 
   const getAnimeSearch = async (animeSearch) => {
     setLoading(true);
@@ -128,14 +122,13 @@ export const ApiDataProvider = ({ children }) => {
         `${baseUrl}/anime?q=${animeSearch}`
       );
       setAnimeSearch(resAnimeSearch.data);
-      console.log(resAnimeSearch.data, "AnimeSearch");
+      // console.log(resAnimeSearch.data, "AnimeSearch");
       setLoading(false);
     } catch (err) {
       console.log("AnimeSearch", err);
       setLoading(false);
     }
   };
-
 
   const getMangaSearch = async (mangaSearch) => {
     setLoading(true);
@@ -144,7 +137,7 @@ export const ApiDataProvider = ({ children }) => {
         `${baseUrl}/manga?q=${mangaSearch}`
       );
       setMangaSearch(resMangaSearch.data);
-      console.log(resMangaSearch.data, "MangaSearch");
+      // console.log(resMangaSearch.data, "MangaSearch");
       setLoading(false);
     } catch (err) {
       console.log("MangaSearch", err);
@@ -152,7 +145,58 @@ export const ApiDataProvider = ({ children }) => {
     }
   };
 
+  const getAnimeTop = async () => {
+    setLoading(true);
+    try {
+      const { data: resAnimeTop } = await axios.get(`${baseUrl}/top/anime`);
+      setAnimeTop(resAnimeTop.data);
+      console.log(resAnimeTop.data, "AnimeTop");
+      setLoading(false);
+    } catch (err) {
+      console.log("AnimeTop", err);
+      setLoading(false);
+    }
+  };
 
+  const getMangaTop = async () => {
+    setLoading(true);
+    try {
+      const { data: resMangaTop } = await axios.get(`${baseUrl}/top/manga`);
+      setMangaTop(resMangaTop.data);
+      console.log(resMangaTop.data, "MangaTop");
+      setLoading(false);
+    } catch (err) {
+      console.log("MangaTop", err);
+      setLoading(false);
+    }
+  };
+
+  const getComing = async () => {
+    setLoading(true);
+    try {
+      const { data: resComing } = await axios.get(`${baseUrl}/top/anime?filter=upcoming`);
+      setComing(resComing.data);
+      console.log(resComing.data, "Coming");
+      setLoading(false);
+    } catch (err) {
+      console.log("Coming", err);
+      setLoading(false);
+    }
+  };
+
+
+  const getAiring = async () => {
+    setLoading(true);
+    try {
+      const { data: resAiring } = await axios.get(`${baseUrl}/seasons/now`);
+      setAiring(resAiring.data);
+      console.log(resAiring.data, "Airing");
+      setLoading(false);
+    } catch (err) {
+      console.log("Airing", err);
+      setLoading(false);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -161,10 +205,12 @@ export const ApiDataProvider = ({ children }) => {
     setLoading(true);
     if (search) {
       router.push({
-        pathname: '/Search',
-        query: {search},
-      })
+        pathname: "/Search",
+        query: { search },
+      });
     }
+    setSearch("")
+    setToggleSearch(false)
   };
 
   const handleChange = (e) => {
@@ -183,6 +229,8 @@ export const ApiDataProvider = ({ children }) => {
     getAnimeSearch();
     getMangaSearch();
   }, []);
+
+  
 
   return (
     <ApiDataContext.Provider
@@ -204,7 +252,17 @@ export const ApiDataProvider = ({ children }) => {
         getAnimeId,
         animeId,
         getMangaId,
-        mangaId
+        mangaId,
+        animeTop,
+        mangaTop,
+        coming,
+        getComing,
+        getAnimeTop,
+        getMangaTop,
+        toggleSearch,
+        setToggleSearch,
+        getAiring,
+        airing
       }}
     >
       {children}
