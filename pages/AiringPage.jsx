@@ -8,7 +8,7 @@ import { ApiDataContext } from './context/ApiData';
 export default function AiringPage() {
     const { airing, loading,getAiring } = useContext(ApiDataContext);
     useEffect(() => {
-        getAiring();
+        getAiring() ;
       }, []);
   return (
     <div className=' min-h-screen'>
