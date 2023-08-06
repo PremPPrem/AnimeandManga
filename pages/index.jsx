@@ -5,6 +5,7 @@ import HeaderHome from "./components/HeaderHome";
 import TopAnime from "./components/AnimeAndManga/TopAnime";
 import TopManga from "./components/AnimeAndManga/TopManga";
 import Airing from "./components/AnimeAndManga/Airing";
+import { BsArrowRightCircleFill } from "react-icons/bs";
 import Link from "next/link";
 
 export default function Home() {
@@ -26,48 +27,47 @@ export default function Home() {
       <div className="min-h-screen mb-20 sm:mb-12">
         <HeaderHome />
         <div className="text-[3rem] sm:text-[2.125rem] text-amber-custom font-extrabold ml-8 sm:text-center sm:ml-0 mt-8">
-        <Link
-            href="/TopAnimePage"
-            className=" hover:text-white hover:before:content-['Click_To'] hover:after:content-['Page']"
-          >
-            {" "}
-            Top Anime{" "}
+          <Link href="/TopAnimePage" className="group">
+            <BsArrowRightCircleFill className="inline text-white group-hover:text-amber-custom " />
+            <span className="ml-4 group-hover:ml-8 group-hover:text-white">
+              Top Anime
+            </span>
           </Link>
         </div>
         <div className=" border-b-2 mx-4 mt-2 mb-8"></div>
         <TopAnime />
 
         <div className="text-[3rem] sm:text-[2.125rem] text-amber-custom font-extrabold ml-8 sm:text-center sm:ml-0 mt-20 sm:mt-10">
-          <Link
-            href="/AiringPage"
-            className=" hover:text-white hover:before:content-['Click_To'] hover:after:content-['Page']"
-          >
-            {" "}
-            Airing This Season{" "}
+          <Link href="/AiringPage" className="group">
+            <BsArrowRightCircleFill className="inline text-white group-hover:text-amber-custom " />
+            <span className="ml-4 group-hover:ml-8 group-hover:text-white">
+              Airing This Season
+            </span>
           </Link>
         </div>
         <div className=" border-b-2 mx-4 mt-2 mb-8"></div>
         <Airing />
 
         <div className="text-[3rem] sm:text-[2.125rem] text-amber-custom font-extrabold ml-8 sm:text-center sm:ml-0 mt-20 sm:mt-10">
-        <Link
-            href="/ComingPage"
-            className=" hover:text-white hover:before:content-['Click_To'] hover:after:content-['Page']"
-          >
-            {" "}
-            Coming Soon{" "}
+          <Link href="/ComingPage" className="group">
+            <BsArrowRightCircleFill className="inline text-white group-hover:text-amber-custom " />
+            <span className="ml-4 group-hover:ml-8 group-hover:text-white">
+              Coming Soon
+            </span>
           </Link>
         </div>
         <div className=" border-b-2 mx-4 mt-2 mb-8"></div>
         <Coming />
 
         <div className="text-[3rem] sm:text-[2.125rem] text-amber-custom font-extrabold ml-8 sm:text-center sm:ml-0 mt-20 sm:mt-10">
-        <Link
+          <Link
             href="/TopMangaPage"
-            className=" hover:text-white hover:before:content-['Click_To'] hover:after:content-['Page']"
+            className="group"
           >
-            {" "}
-            Top Manga{" "}
+            <BsArrowRightCircleFill className="inline text-white group-hover:text-amber-custom " />
+            <span className="ml-4 group-hover:ml-8 group-hover:text-white">
+              Top Manga
+            </span>
           </Link>
         </div>
         <div className=" border-b-2 mx-4 mt-2 mb-8"></div>
